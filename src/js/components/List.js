@@ -1,13 +1,16 @@
 export class List {
     constructor() {
-        this.todo = [];
+        this.todos = [
+            {id: 1, title: 'First'},
+            {id: 2, title: 'Second'}
+        ];
     }
 
     add({ title }) {
-        this.todo.push({
+        this.todos.push({
             id: Date.now().toString(),
             title
-        })
+        });
     }
 
     update(id) {
