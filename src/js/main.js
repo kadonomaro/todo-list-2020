@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
         template: `
             <li class="todo__item">
                 <div class="item">
-                    <input type="checkbox">
-                    <span class="item__title">#title</span>
+                    <input type="checkbox" checked='{isDone}'>
+                    <span class="item__title">{title}</span>
                     <button class="item__button">X</button>
                 </div>
             </li>
@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         list.add({
             title: titleInput.value
         });
+        render.update();
     });
 
 });
