@@ -5,15 +5,32 @@ document.addEventListener('DOMContentLoaded', function () {
     
     const addButton = document.querySelector('.js-add');
     const titleInput = document.querySelector('.js-title');
-    const list = new List();
 
+    const todos = [
+        {
+            id: 1, 
+            title: 'First',
+            isDone: false
+        },
+        {
+            id: 2, 
+            title: 'Second',
+            isDone: false
+        },
+        {
+            id: 3, 
+            title: 'Third',
+            isDone: true
+        }
+    ];
+    const list = new List(todos);
     const render = new Render({
-        list: list.todos,
+        data: list.todos,
         root: '.js-list',
         template: `
             <li class="todo__item">
                 <div class="item">
-                    <input type="checkbox" checked='{isDone}'>
+                    <input type="checkbox">
                     <span class="item__title">{title}</span>
                     <button class="item__button">X</button>
                 </div>
@@ -29,6 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
             title: titleInput.value
         });
         render.update();
+
+        titleInput.value = '';
     });
 
 });
