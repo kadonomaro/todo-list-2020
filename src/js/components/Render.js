@@ -5,18 +5,11 @@ export class Render {
         this.template = template;
     }
 
-    start() {
+    update() {
         this.data.map(item => {
             this.root.innerHTML += this.template.replace(/\{(.*)\}/g, (match, first) => {
                 return item[first] || '';
             });
-        });
-    }
-
-    update() {
-        const last = this.data.length - 1;
-        this.root.innerHTML += this.template.replace(/\{(.*)\}/g, (match, first) => {
-            return this.data[last][first] || '';
         });
     }
 }

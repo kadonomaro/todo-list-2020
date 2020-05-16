@@ -29,17 +29,17 @@ document.addEventListener('DOMContentLoaded', function () {
         root: '.js-list',
         template: `
             <li class="todo__item">
-                <div class="item">
+                <div class="item" data-id="{id}">
                     <input type="checkbox">
                     <span class="item__title">{title}</span>
                     <button class="item__button">X</button>
                 </div>
             </li>
-            
         `
     });
 
-    render.start();
+
+    render.update();
 
     addButton.addEventListener('click', () => {
         list.add({
