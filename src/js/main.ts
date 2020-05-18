@@ -1,8 +1,9 @@
 
 import { List } from './components/List';
+import { Render } from "./components/Render";
+
 import { IItem } from './interfaces/Item';
 import '@/css/style.scss';
-// import { Render } from "./components/Render.js";
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -26,20 +27,22 @@ document.addEventListener('DOMContentLoaded', function () {
             id: 3, 
             title: 'Third',
             isDone: true
+        },
+        {
+            id: 4, 
+            title: 'Fourth',
+            isDone: true
         }
     ];
     const list = new List(todos);
-    // const render = new Render({
-    //     data: list.todos,
-    //     root: '.js-list'
-    // });
+    const render = new Render(list.todos,'.js-list');
 
 
-    // render.update();
+    render.update();
 
     addButton.addEventListener('click', () => {
         list.add(titleInput.value);
-        // render.update();
+        render.update();
         titleInput.value = '';
         console.log(list.todos);
     });
