@@ -1,5 +1,6 @@
-import { List } from "./components/List.js";
-import { Render } from "./components/Render.js";
+
+import { List } from "./components/List";
+// import { Render } from "./components/Render.js";
 
 interface IItem {
     id: number | string
@@ -31,17 +32,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     ];
     const list = new List(todos);
-    const render = new Render({
-        data: list.todos,
-        root: '.js-list'
-    });
+    // const render = new Render({
+    //     data: list.todos,
+    //     root: '.js-list'
+    // });
 
 
-    render.update();
+    // render.update();
 
     addButton.addEventListener('click', () => {
         list.add(titleInput.value);
-        render.update();
+        // render.update();
         titleInput.value = '';
     });
 
