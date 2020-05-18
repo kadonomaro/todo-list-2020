@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     ];
     const list = new List(todos);
-    const render = new Render(list.todos,'.js-list');
+    const render = new Render(list.todos, '.js-list');
 
 
     render.update();
@@ -44,8 +44,17 @@ document.addEventListener('DOMContentLoaded', function () {
         list.add(titleInput.value);
         render.update();
         titleInput.value = '';
-        console.log(list.todos);
     });
+    
+    document.addEventListener('click', removeItem);
 
-
+    function removeItem(evt: Event): void {
+        const button = evt.target as HTMLButtonElement;
+        if (button.classList.contains('js-remove-item')) {
+            const parent = button.closest('.item') as HTMLDivElement;
+            list.remove(parent.dataset.id);
+            render.update();
+        }
+    }
+    
 });

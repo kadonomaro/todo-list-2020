@@ -15,7 +15,8 @@ export class Render {
             parent.classList.add('todo__item');
 
             const child = document.createElement('div') as HTMLDivElement;
-            child.classList.add('item')
+            child.classList.add('item');
+            child.dataset.id = item.id.toString();
 
             const checkboxElement = document.createElement('input') as HTMLInputElement;
             checkboxElement.setAttribute('type', 'checkbox');
@@ -27,7 +28,7 @@ export class Render {
             titleElement.textContent = item.title;
 
             const buttonElement = document.createElement('button') as HTMLButtonElement;
-            buttonElement.classList.add('item__button');
+            buttonElement.classList.add('item__button', 'js-remove-item');
 
             child.append(checkboxElement);
             child.append(titleElement);

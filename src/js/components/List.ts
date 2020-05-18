@@ -18,8 +18,10 @@ export class List {
 
     }
 
-    remove(id: number) {
-        const index: number = this.todos.findIndex(item => item.id === id);
-        this.todos.splice(index, 1);
+    remove(id: string | number | undefined) {
+        if (id) {
+            const index: number = this.todos.findIndex(item => item.id.toString() === id);
+            this.todos.splice(index, 1);
+        }
     }
 }
