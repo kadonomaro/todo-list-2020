@@ -5,7 +5,7 @@ interface IItem {
 }
 
 export class List {
-    todos: Array<IItem>
+    public todos: Array<IItem>
     constructor(todos: Array<IItem>) {
         this.todos = todos;
     }
@@ -23,6 +23,7 @@ export class List {
     }
 
     remove(id: number) {
-
+        const index: number = this.todos.findIndex(item => item.id === id);
+        this.todos.splice(index, 1);
     }
 }

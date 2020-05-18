@@ -1,7 +1,6 @@
 import { List } from "./components/List.js";
 import { Render } from "./components/Render.js";
 
-
 interface IItem {
     id: number | string
     title: string,
