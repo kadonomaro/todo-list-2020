@@ -1,8 +1,7 @@
 export class Render {
-    constructor({data, root, template}) {
+    constructor({data, root}) {
         this.data = data;
         this.root = document.querySelector(root);
-        this.template = template;
     }
 
     update() {

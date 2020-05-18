@@ -1,16 +1,24 @@
 import { List } from "./components/List.js";
 import { Render } from "./components/Render.js";
 
+
+interface IItem {
+    id: number | string
+    title: string,
+    isDone: boolean
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     
-    const addButton = document.querySelector('.js-add');
-    const titleInput = document.querySelector('.js-title');
+    const addButton = document.querySelector('.js-add') as HTMLButtonElement;
+    const titleInput = document.querySelector('.js-title') as HTMLInputElement;
 
-    const todos = [
+
+    const todos: Array<IItem> = [
         {
             id: 1, 
             title: 'First',
-            isDone: false
+            isDone: false,
         },
         {
             id: 2, 
@@ -26,25 +34,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const list = new List(todos);
     const render = new Render({
         data: list.todos,
-        root: '.js-list',
-        template: `
-            <li class="todo__item">
-                <div class="item">
-                    <input type="checkbox">
-                    <span class="item__title">{title}</span>
-                    <button class="item__button js-delete-item" data-id="{id}">X</button>
-                </div>
-            </li>
-        `
+        root: '.js-list'
     });
 
 
     render.update();
 
     addButton.addEventListener('click', () => {
-        list.add({
-            title: titleInput.value
-        });
+        list.add(titleInput.value);
         render.update();
         titleInput.value = '';
     });

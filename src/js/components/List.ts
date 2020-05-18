@@ -1,20 +1,28 @@
+interface IItem {
+    id: number | string
+    title: string,
+    isDone: boolean
+}
+
 export class List {
-    constructor(todos) {
+    todos: Array<IItem>
+    constructor(todos: Array<IItem>) {
         this.todos = todos;
     }
 
-    add({ title }) {
+    add(title: string): void {
         this.todos.push({
             id: Date.now().toString(),
-            title
+            title: title,
+            isDone: false
         });
     }
 
-    update(id) {
+    update(id: number) {
 
     }
 
-    remove(id) {
+    remove(id: number) {
 
     }
 }
