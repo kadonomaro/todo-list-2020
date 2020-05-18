@@ -1,8 +1,4 @@
-interface IItem {
-    id: number | string
-    title: string,
-    isDone: boolean
-}
+import { IItem } from '../interfaces/Item';
 
 export class List {
     public todos: Array<IItem>

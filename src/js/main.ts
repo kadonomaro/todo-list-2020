@@ -1,12 +1,9 @@
 
-import { List } from "./components/List";
+import { List } from './components/List';
+import { IItem } from './interfaces/Item';
+import '@/css/style.scss';
 // import { Render } from "./components/Render.js";
 
-interface IItem {
-    id: number | string
-    title: string,
-    isDone: boolean
-}
 
 document.addEventListener('DOMContentLoaded', function () {
     
@@ -44,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         list.add(titleInput.value);
         // render.update();
         titleInput.value = '';
+        console.log(list.todos);
     });
 
 
