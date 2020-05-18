@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
         root: '.js-list',
         template: `
             <li class="todo__item">
-                <div class="item" data-id="{id}">
+                <div class="item">
                     <input type="checkbox">
                     <span class="item__title">{title}</span>
-                    <button class="item__button">X</button>
+                    <button class="item__button js-delete-item" data-id="{id}">X</button>
                 </div>
             </li>
         `
@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
             title: titleInput.value
         });
         render.update();
-
         titleInput.value = '';
     });
+
 
 });

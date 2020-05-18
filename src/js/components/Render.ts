@@ -6,6 +6,7 @@ export class Render {
     }
 
     update() {
+        this.root.innerHTML = '';
         this.data.map(item => {
             this.root.innerHTML += this.template.replace(/\{(.*)\}/g, (match, first) => {
                 return item[first] || '';

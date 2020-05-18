@@ -15,7 +15,6 @@ export class List {
     }
 
     remove(id) {
-        const index = this.todos.findIndex(item => item.id === id);
-        this.todos.splice(index, 1);
+
     }
 }
