@@ -11,32 +11,16 @@ export class Render {
     update() {
         this.root?.innerHTML = '';
         for (const item of this.data) {
-            const parent = document.createElement('li') as HTMLLIElement;
-            parent.classList.add('todo__item');
-
-            const child = document.createElement('div') as HTMLDivElement;
-            child.classList.add('item');
-            child.dataset.id = item.id.toString();
-
-            const checkboxElement = document.createElement('input') as HTMLInputElement;
-            checkboxElement.setAttribute('type', 'checkbox');
-            checkboxElement.classList.add('item');
-            item.isDone ? checkboxElement.checked = true : checkboxElement.checked = false;
-
-            const titleElement = document.createElement('input') as HTMLInputElement;
-            titleElement.classList.add('item__title', 'input');
-            titleElement.value = item.title;
-
-            const buttonElement = document.createElement('button') as HTMLButtonElement;
-            buttonElement.classList.add('item__button', 'js-remove-item');
-
-            child.append(checkboxElement);
-            child.append(titleElement);
-            child.append(buttonElement);
-
-            parent.append(child);
             
-            this.root?.append(parent);
+            this.root?.innerHTML +=             `
+            <li class="todo__item">
+                <div class="item" data-id=${item.id}>
+                    <input type="checkbox">
+                    <span class="item__title">${item.title}</span>
+                    <button class="item__button js-remove-item"></button>
+                </div>
+            </li>
+            `
         }
 
     }
