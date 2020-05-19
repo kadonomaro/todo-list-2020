@@ -2,8 +2,10 @@ import { IItem } from '../interfaces/Item';
 
 export class List {
     public todos: Array<IItem>
+    private readonly _length: number
     constructor(todos: Array<IItem>) {
         this.todos = todos;
+        this._length = this.todos.length;
     }
 
     add(title: string): void {
@@ -24,4 +26,9 @@ export class List {
             this.todos.splice(index, 1);
         }
     }
+
+    get length() {
+        return this._length;
+    }
+
 }

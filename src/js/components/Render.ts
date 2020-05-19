@@ -12,11 +12,17 @@ export class Render {
         if (this.root) {
             this.root.innerHTML = '';
             for (const item of this.data) {
-                this.root.innerHTML +=             `
+                this.root.innerHTML += 
+                `
                 <li class="todo__item">
                     <div class="item" data-id=${item.id}>
-                        <input type="checkbox">
-                        <span class="item__title">${item.title}</span>
+                        <label class="checkbox">
+                            <input type="checkbox" class="checkbox__input visually-hidden js-complete-item">
+                            <span class="checkbox__custom"></span>
+                        </label>
+                        <label class="item__label">
+                            <input type="text" class="item__title" value="${item.title}" readonly>
+                        </label>
                         <button class="item__button js-remove-item"></button>
                     </div>
                 </li>
