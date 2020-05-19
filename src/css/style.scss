@@ -1,29 +1,4 @@
-.todo {
-    max-width: 600px;
-    margin: 0 auto;
-
-    &__list {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-    &__item {
-        margin-bottom: 10px;
-    }
-    &__controls {
-        display: flex;
-    }
-}
-
-.item {
-    display: flex;
-    &__title {
-        display: block;
-        padding: 5px 8px;
-        flex-grow: 1;
-        background-color: #cecece;
-    }
-    &__button {
-
-    }
-}
+@import 'variables';
+@import 'common';
+@import 'blocks/todo';
+@import 'blocks/item';

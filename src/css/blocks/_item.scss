@@ -1,0 +1,23 @@
+.item {
+    position: relative;
+    display: flex;
+    transition: opacity 0.2s ease-in, filter 0.2s ease-in, transform 0.3s ease-in, margin 0.3s linear;
+    &__title {
+        flex: 1;
+        padding: 8px;
+        font-size: inherit;
+        font-family: inherit;
+        background-color: $color-gray-light;
+        border: 3px solid $color-main;
+        -webkit-appearance: none;
+    }
+    &__button {
+        width: 40px;
+        background-color: $color-main;
+        background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25.612 4.388c-5.851-5.85-15.372-5.851-21.224 0-5.851 5.852-5.85 15.372 0 21.223 5.851 5.852 15.372 5.852 21.224 0 5.85-5.851 5.85-15.372 0-21.223zm-4.694 16.53c-.45.45-1.181.45-1.632 0L15 16.632l-4.49 4.49a1.154 1.154 0 11-1.632-1.633l4.49-4.49-4.286-4.285a1.154 1.154 0 111.632-1.632L15 13.368l4.081-4.082a1.154 1.154 0 111.633 1.633l-4.082 4.08 4.286 4.286c.45.451.45 1.182 0 1.633z' fill='%23fff'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+        cursor: pointer;
+    }
+}

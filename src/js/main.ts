@@ -47,10 +47,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function addItem(): void {
-        list.add(titleInput.value);
-        render.update();
-        titleInput.value = '';
-        storage.save(list.todos);
+        if (titleInput.value) {
+            list.add(titleInput.value);
+            render.update();
+            titleInput.value = '';
+            storage.save(list.todos);
+        }
     }
 
 

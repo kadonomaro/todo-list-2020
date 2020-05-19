@@ -23,9 +23,9 @@ export class Render {
             checkboxElement.classList.add('item');
             item.isDone ? checkboxElement.checked = true : checkboxElement.checked = false;
 
-            const titleElement = document.createElement('span') as HTMLSpanElement;
-            titleElement.classList.add('item__title');
-            titleElement.textContent = item.title;
+            const titleElement = document.createElement('input') as HTMLInputElement;
+            titleElement.classList.add('item__title', 'input');
+            titleElement.value = item.title;
 
             const buttonElement = document.createElement('button') as HTMLButtonElement;
             buttonElement.classList.add('item__button', 'js-remove-item');
