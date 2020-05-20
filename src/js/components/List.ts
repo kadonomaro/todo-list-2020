@@ -1,5 +1,7 @@
 import { IItem } from '../interfaces/Item';
 
+type ID = number | string | undefined;
+
 export class List {
     public todos: Array<IItem>
     private readonly _length: number
@@ -16,7 +18,7 @@ export class List {
         });
     }
 
-    update(id: string | number | undefined, isComplete: boolean, title: string) {
+    update({id, isComplete, title}: IItem) {
         if (id) {
             const index: number = this.todos.findIndex(item => item.id.toString() === id);
             this.todos[index].isComplete = isComplete;
@@ -25,7 +27,7 @@ export class List {
 
     }
 
-    remove(id: string | number | undefined) {
+    remove(id: ID) {
         if (id) {
             const index: number = this.todos.findIndex(item => item.id.toString() === id);
             this.todos.splice(index, 1);

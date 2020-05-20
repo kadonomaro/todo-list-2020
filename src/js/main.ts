@@ -71,7 +71,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const checkbox = evt.target as HTMLInputElement;
         if (checkbox.classList.contains('js-complete-item')) {
             const parent = checkbox.closest('.item') as HTMLDivElement;
-            list.update(parent.dataset.id, checkbox.checked, '');
+            list.update({
+                id: parent.dataset.id || '',
+                isComplete: checkbox.checked,
+            });
             // render.update();
             storage.save(list.todos);
         }
