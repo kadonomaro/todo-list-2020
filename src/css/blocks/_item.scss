@@ -29,3 +29,6 @@
         cursor: pointer;
     }
 }
+.item--completed .item__title {
+    text-decoration: line-through;
+}

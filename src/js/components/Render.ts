@@ -15,9 +15,9 @@ export class Render {
                 this.root.innerHTML += 
                 `
                 <li class="todo__item">
-                    <div class="item" data-id=${item.id}>
+                    <div class="item ${item.isComplete ? 'item--completed' : ''}" data-id=${item.id}>
                         <label class="checkbox">
-                            <input type="checkbox" class="checkbox__input visually-hidden js-complete-item">
+                            <input type="checkbox" class="checkbox__input visually-hidden js-complete-item" ${item.isComplete ? 'checked' : ''}">
                             <span class="checkbox__custom"></span>
                         </label>
                         <label class="item__label">

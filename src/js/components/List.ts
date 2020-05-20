@@ -12,11 +12,16 @@ export class List {
         this.todos.push({
             id: Date.now().toString(),
             title: title,
-            isDone: false
+            isComplete: false
         });
     }
 
-    update(id: number) {
+    update(id: string | number | undefined, isComplete: boolean, title: string) {
+        if (id) {
+            const index: number = this.todos.findIndex(item => item.id.toString() === id);
+            this.todos[index].isComplete = isComplete;
+            this.todos[index].title = title || this.todos[index].title;
+        }
 
     }
 

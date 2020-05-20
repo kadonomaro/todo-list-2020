@@ -17,22 +17,22 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             id: 1, 
             title: 'First',
-            isDone: false,
+            isComplete: false,
         },
         {
             id: 2, 
             title: 'Second',
-            isDone: false
+            isComplete: false
         },
         {
             id: 3, 
             title: 'Third',
-            isDone: true
+            isComplete: true
         },
         {
             id: 4, 
             title: 'Fourth',
-            isDone: true
+            isComplete: true
         }
     ];
     const list = new List(todos);
@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     addButton.addEventListener('click', addItem);
     document.addEventListener('click', removeItem);
+    document.addEventListener('click', completeItem);
 
 
     function addItem(): void {
@@ -62,6 +63,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const parent = button.closest('.item') as HTMLDivElement;
             list.remove(parent.dataset.id);
             render.update();
+            storage.save(list.todos);
+        }
+    }
+
+    function completeItem(evt: Event): void {
+        const checkbox = evt.target as HTMLInputElement;
+        if (checkbox.classList.contains('js-complete-item')) {
+            const parent = checkbox.closest('.item') as HTMLDivElement;
+            list.update(parent.dataset.id, checkbox.checked, '');
+            // render.update();
             storage.save(list.todos);
         }
     }
