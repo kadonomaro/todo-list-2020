@@ -8,7 +8,7 @@ export class Render {
         this.root = document.querySelector(root);
     }
 
-    update() {
+    update(): void {
         if (this.root) {
             this.root.innerHTML = '';
             for (const item of this.data) {
