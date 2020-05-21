@@ -1,4 +1,5 @@
 import { IItem } from "../interfaces/Item";
+type ID = number | string
 
 export class Render {
     public data: Array<IItem>
@@ -8,7 +9,7 @@ export class Render {
         this.root = document.querySelector(root);
     }
 
-    update(): void {
+    start(): void {
         if (this.root) {
             this.root.innerHTML = '';
             for (const item of this.data) {
@@ -18,6 +19,16 @@ export class Render {
                     isComplete: item.isComplete
                 })
             }
+        }
+    }
+
+    update(id: number):void {
+        if (this.root) {
+            this.root.children[id].innerHTML = this.setTemplate({
+                id: this.data[id].id,
+                title: this.data[id].title,
+                isComplete: this.data[id].isComplete
+            })
         }
     }
 

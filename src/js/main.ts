@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    render.update();
+    render.start();
 
     addButton.addEventListener('click', addItem);
     document.addEventListener('click', removeItem);
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function addItem(): void {
         if (titleInput.value) {
             list.add(titleInput.value);
-            render.update();
+            render.start();
             titleInput.value = '';
             storage.save(list.todos);
         }
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (button.classList.contains('js-remove-item')) {
             const parent = button.closest('.item') as HTMLDivElement;
             list.remove(parent.dataset.id);
-            render.update();
+            render.start();
             storage.save(list.todos);
         }
     }
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 id: parent.dataset.id || '',
                 isComplete: checkbox.checked,
             });
-            render.update();
+            render.update(list.getIndex(parent.dataset.id));
             storage.save(list.todos);
         }
     }

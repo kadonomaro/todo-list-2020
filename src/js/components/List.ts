@@ -18,13 +18,10 @@ export class List {
         });
     }
 
-    update({id, isComplete, title}: IItem) {
-        if (id) {
-            const index: number = this.todos.findIndex(item => item.id.toString() === id);
-            this.todos[index].isComplete = isComplete;
-            this.todos[index].title = title || this.todos[index].title;
-        }
-
+    update({id, isComplete, title}: IItem): void {
+        const index: number = this.todos.findIndex(item => item.id.toString() === id);
+        this.todos[index].isComplete = isComplete;
+        this.todos[index].title = title || this.todos[index].title;
     }
 
     remove(id: ID) {
@@ -32,6 +29,10 @@ export class List {
             const index: number = this.todos.findIndex(item => item.id.toString() === id);
             this.todos.splice(index, 1);
         }
+    }
+
+    getIndex(id: ID): number {
+        return this.todos.findIndex(item => item.id.toString() === id?.toString());
     }
 
     get length() {
