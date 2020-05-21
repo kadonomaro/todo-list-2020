@@ -12,22 +12,31 @@ export class Render {
         if (this.root) {
             this.root.innerHTML = '';
             for (const item of this.data) {
-                this.root.innerHTML += 
-                `
-                <li class="todo__item">
-                    <div class="item ${item.isComplete ? 'item--completed' : ''}" data-id=${item.id}>
-                        <label class="checkbox">
-                            <input type="checkbox" class="checkbox__input visually-hidden js-complete-item" ${item.isComplete ? 'checked' : ''}>
-                            <span class="checkbox__custom"></span>
-                        </label>
-                        <label class="item__label">
-                            <input type="text" class="item__title" value="${item.title}" readonly>
-                        </label>
-                        <button class="item__button js-remove-item"></button>
-                    </div>
-                </li>
-                `
+                this.root.innerHTML += this.setTemplate({
+                    id: item.id,
+                    title: item.title,
+                    isComplete: item.isComplete
+                })
             }
         }
     }
+
+    private setTemplate({id, isComplete, title}: IItem): string {
+        return `
+        <li class="todo__item">
+            <div class="item ${isComplete ? 'item--completed' : ''}" data-id=${id}>
+                <label class="checkbox">
+                    <input type="checkbox" class="checkbox__input visually-hidden js-complete-item" ${isComplete ? 'checked' : ''}>
+                    <span class="checkbox__custom"></span>
+                </label>
+                <label class="item__label">
+                    <input type="text" class="item__title" value="${title}" readonly>
+                </label>
+                <button class="item__button js-remove-item"></button>
+            </div>
+        </li>
+        `
+    }
 }
+
+
