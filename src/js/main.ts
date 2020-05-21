@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 id: parent.dataset.id || '',
                 isComplete: checkbox.checked,
             });
-            // render.update();
+            render.update();
             storage.save(list.todos);
         }
     }
