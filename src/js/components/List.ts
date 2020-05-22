@@ -3,15 +3,15 @@ import { IItem } from '../interfaces/Item';
 type ID = number | string | undefined;
 
 export class List {
-    public todos: Array<IItem>
+    public items: Array<IItem>
     private readonly _length: number
-    constructor(todos: Array<IItem>) {
-        this.todos = todos;
-        this._length = this.todos.length;
+    constructor(items: Array<IItem>) {
+        this.items = items;
+        this._length = this.items.length;
     }
 
     add(title: string): void {
-        this.todos.push({
+        this.items.push({
             id: Date.now().toString(),
             title: title,
             isComplete: false
@@ -19,24 +19,24 @@ export class List {
     }
 
     update({id, isComplete, title}: IItem): void {
-        const index: number = this.todos.findIndex(item => item.id.toString() === id);
-        this.todos[index].isComplete = isComplete || this.todos[index].isComplete;
-        this.todos[index].title = title || this.todos[index].title;
+        const index: number = this.items.findIndex(item => item.id.toString() === id);
+        this.items[index].isComplete = isComplete || this.items[index].isComplete;
+        this.items[index].title = title || this.items[index].title;
     }
 
     remove(id: ID) {
         if (id) {
-            const index: number = this.todos.findIndex(item => item.id.toString() === id);
-            this.todos.splice(index, 1);
+            const index: number = this.items.findIndex(item => item.id.toString() === id);
+            this.items.splice(index, 1);
         }
     }
 
     getIndex(id: ID): number {
-        return this.todos.findIndex(item => item.id.toString() === id?.toString());
+        return this.items.findIndex(item => item.id.toString() === id?.toString());
     }
 
     getCompleted() {
-        return this.todos.filter(item => item.isComplete === true);
+        return this.items.filter(item => item.isComplete === true);
     }
 
     get length() {

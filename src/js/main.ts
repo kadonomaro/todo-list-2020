@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const titleInput = document.querySelector('.js-title') as HTMLInputElement;
     const progressBar = document.querySelector('.js-progress') as HTMLProgressElement;
 
-    const todos: Array<IItem> = storage.load() || [
+    const items: Array<IItem> = storage.load() || [
         {
             id: 1, 
             title: 'First',
@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
             isComplete: true
         }
     ];
-    const list = new List(todos);
-    const render = new Render(list.todos, '.js-list');
+    const list = new List(items);
+    const render = new Render(list.items, '.js-list');
 
     render.start();
     progressBarUpdate();
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
             render.start();
             titleInput.value = '';
             progressBarUpdate();
-            storage.save(list.todos);
+            storage.save(list.items);
         }
     }
 
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
             list.remove(parent.dataset.id);
             render.start();
             progressBarUpdate();
-            storage.save(list.todos);
+            storage.save(list.items);
         }
     }
 
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             render.update(list.getIndex(parent.dataset.id));
             progressBarUpdate();
-            storage.save(list.todos);
+            storage.save(list.items);
         }
     }
 
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     id: parent.dataset.id || '',
                     title: title?.value
                 });
-                storage.save(list.todos);
+                storage.save(list.items);
             }
             
         }
