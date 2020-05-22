@@ -35,6 +35,10 @@ export class List {
         return this.todos.findIndex(item => item.id.toString() === id?.toString());
     }
 
+    getCompleted() {
+        return this.todos.filter(item => item.isComplete === true);
+    }
+
     get length() {
         return this._length;
     }

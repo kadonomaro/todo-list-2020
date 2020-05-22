@@ -22,7 +22,7 @@ export class Render {
         }
     }
 
-    update(id: number):void {
+    update(id: number): void {
         if (this.root) {
             this.root.children[id].innerHTML = this.setTemplate({
                 id: this.data[id].id,
