@@ -4,10 +4,8 @@ type ID = number | string | undefined;
 
 export class List {
     public items: Array<IItem>
-    private readonly _length: number
     constructor(items: Array<IItem>) {
         this.items = items;
-        this._length = this.items.length;
     }
 
     add(title: string): void {
@@ -20,7 +18,7 @@ export class List {
 
     update({id, isComplete, title}: IItem): void {
         const index: number = this.items.findIndex(item => item.id.toString() === id);
-        this.items[index].isComplete = isComplete || this.items[index].isComplete;
+        this.items[index].isComplete = isComplete?.toString().length ? isComplete : this.items[index].isComplete;
         this.items[index].title = title || this.items[index].title;
     }
 
@@ -37,10 +35,6 @@ export class List {
 
     getCompleted() {
         return this.items.filter(item => item.isComplete === true);
-    }
-
-    get length() {
-        return this._length;
     }
 
 }

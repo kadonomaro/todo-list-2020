@@ -96,6 +96,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     id: parent.dataset.id || '',
                     title: title?.value
                 });
+                render.update(list.getIndex(parent.dataset.id));
+                progressBarUpdate();
                 storage.save(list.items);
             }
             
@@ -104,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
     function progressBarUpdate(): void {
-        progressBar.max = list.length;
+        progressBar.max = list.items.length;
         progressBar.value = list.getCompleted().length;
     }
 
