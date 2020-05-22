@@ -17,20 +17,20 @@ export class List {
     }
 
     update({id, isComplete, title}: IItem): void {
-        const index: number = this.items.findIndex(item => item.id.toString() === id);
+        const index: number = this.items.findIndex(item => item.id?.toString() === id);
         this.items[index].isComplete = isComplete?.toString().length ? isComplete : this.items[index].isComplete;
         this.items[index].title = title || this.items[index].title;
     }
 
     remove(id: ID) {
         if (id) {
-            const index: number = this.items.findIndex(item => item.id.toString() === id);
+            const index: number = this.items.findIndex(item => item.id?.toString() === id);
             this.items.splice(index, 1);
         }
     }
 
     getIndex(id: ID): number {
-        return this.items.findIndex(item => item.id.toString() === id?.toString());
+        return this.items.findIndex(item => item.id?.toString() === id?.toString());
     }
 
     getCompleted() {

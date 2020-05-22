@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (checkbox.classList.contains('js-complete-item')) {
             const parent = checkbox.closest('.item') as HTMLDivElement;
             list.update({
-                id: parent.dataset.id || '',
+                id: parent.dataset.id,
                 isComplete: checkbox.checked,
             });
             render.update(list.getIndex(parent.dataset.id));
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (typeof title?.getAttribute('readonly') === "string") {
                 list.update({
-                    id: parent.dataset.id || '',
+                    id: parent.dataset.id,
                     title: title?.value
                 });
                 render.update(list.getIndex(parent.dataset.id));
