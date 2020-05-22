@@ -20,7 +20,7 @@ export class List {
 
     update({id, isComplete, title}: IItem): void {
         const index: number = this.todos.findIndex(item => item.id.toString() === id);
-        this.todos[index].isComplete = isComplete;
+        this.todos[index].isComplete = isComplete || this.todos[index].isComplete;
         this.todos[index].title = title || this.todos[index].title;
     }
 

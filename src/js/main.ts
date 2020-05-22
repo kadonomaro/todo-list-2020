@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     addButton.addEventListener('click', addItem);
     document.addEventListener('click', removeItem);
     document.addEventListener('click', completeItem);
+    document.addEventListener('click', editItem);
 
     function addItem(): void {
         if (titleInput.value) {
@@ -67,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+
     function completeItem(evt: Event): void {
         const checkbox = evt.target as HTMLInputElement;
         if (checkbox.classList.contains('js-complete-item')) {
@@ -81,8 +83,28 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+
+    function editItem(evt: Event): void {
+        const button = evt.target as HTMLInputElement;
+        if (button.classList.contains('js-edit-item')) {
+            const parent = button.closest('.item') as HTMLDivElement;
+            const title = parent.querySelector('.js-editable-item') as HTMLInputElement;
+            title?.toggleAttribute('readonly');
+
+            if (typeof title?.getAttribute('readonly') === "string") {
+                list.update({
+                    id: parent.dataset.id || '',
+                    title: title?.value
+                });
+                storage.save(list.todos);
+            }
+            
+        }
+    }
+    
+
     function progressBarUpdate(): void {
-        progressBar.max = list.todos.length;
+        progressBar.max = list.length;
         progressBar.value = list.getCompleted().length;
     }
 

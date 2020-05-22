@@ -41,7 +41,8 @@ export class Render {
                     <span class="checkbox__custom"></span>
                 </label>
                 <label class="item__label">
-                    <input type="text" class="item__title" value="${title}" readonly>
+                    <input type="text" class="item__title js-editable-item" value="${title}" readonly>
+                    <button class="item__edit js-edit-item"></button>
                 </label>
                 <button class="item__button js-remove-item"></button>
             </div>
