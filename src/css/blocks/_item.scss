@@ -33,21 +33,28 @@
     }
     &__edit {
         position: absolute;
-        width: 15px;
+        width: 20px;
         height: 20px;
         top: 50%;
         right: 5px;
         background-color: transparent;
-        background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-8859-1'%3F%3E%3C!--Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)--%3E%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 477.873 477.873' style='enable-background:new 0 0 477.873 477.873'%3E%3Cpath d='M392.533 238.937c-9.426 0-17.067 7.641-17.067 17.067V426.67c0 9.426-7.641 17.067-17.067 17.067H51.2c-9.426 0-17.067-7.641-17.067-17.067V85.337c0-9.426 7.641-17.067 17.067-17.067H256c9.426 0 17.067-7.641 17.067-17.067S265.426 34.137 256 34.137H51.2C22.923 34.137 0 57.06 0 85.337V426.67c0 28.277 22.923 51.2 51.2 51.2h307.2c28.277 0 51.2-22.923 51.2-51.2V256.003c0-9.425-7.641-17.066-17.067-17.066z'/%3E%3Cpath d='M458.742 19.142A65.328 65.328 0 00412.536.004a64.85 64.85 0 00-46.199 19.149L141.534 243.937a17.254 17.254 0 00-4.113 6.673l-34.133 102.4c-2.979 8.943 1.856 18.607 10.799 21.585 1.735.578 3.552.873 5.38.875a17.336 17.336 0 005.393-.87l102.4-34.133c2.515-.84 4.8-2.254 6.673-4.13l224.802-224.802c25.515-25.512 25.518-66.878.007-92.393zm-24.139 68.277L212.736 309.286l-66.287 22.135 22.067-66.202L390.468 43.353c12.202-12.178 31.967-12.158 44.145.044a31.215 31.215 0 019.12 21.955 31.043 31.043 0 01-9.13 22.067z'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M23.906 3.969A4.097 4.097 0 0021 5.188L5.187 21l-.062.313-1.094 5.5-.312 1.468 1.469-.312 5.5-1.094.312-.063L26.813 11a4.075 4.075 0 000-5.813 4.097 4.097 0 00-2.907-1.218zm0 1.906c.504 0 1.012.23 1.5.719.973.972.973 2.027 0 3l-.718.687-2.97-2.969.688-.718c.489-.489.996-.719 1.5-.719zm-3.593 2.844l2.968 2.969L11.188 23.78a6.813 6.813 0 00-2.97-2.968zM6.938 22.438a4.734 4.734 0 012.625 2.625l-3.282.656z'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
-        background-size: contain;
+        background-size: 100%;
         background-position: center;
         border: none;
         transform: translateY(-50%);
+        transition: opacity 0.1s ease-in;
         cursor: pointer;
+        outline: none;
+        opacity: 0.7;
+        &:hover,
+        &:focus {
+            opacity: 1;
+        }
     }
     &__edit--confirm {
-
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill-rule='evenodd' d='M22.594 3.5L8.062 18.188l-6.656-6.625L0 13l8.063 8L24 4.937z'/%3E%3C/svg%3E");
     }
 }
 .item--completed {

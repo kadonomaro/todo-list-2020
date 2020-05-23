@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const parent = button.closest('.item') as HTMLDivElement;
             const title = parent.querySelector('.js-editable-item') as HTMLInputElement;
             title?.toggleAttribute('readonly');
-
+            button.classList.toggle('item__edit--confirm');
             if (typeof title?.getAttribute('readonly') === "string") {
                 list.update({
                     id: parent.dataset.id,
