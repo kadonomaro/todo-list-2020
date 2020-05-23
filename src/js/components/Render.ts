@@ -36,6 +36,7 @@ export class Render {
     private setTemplate({id, title, isComplete, createdAt}: IItem): string {
         return `
         <li class="todo__item">
+            <time class="todo__date">${dateFilter(createdAt || new Date)}</time>
             <div class="item ${isComplete ? 'item--completed' : ''}" data-id=${id}>
                 <label class="checkbox">
                     <input type="checkbox" class="checkbox__input visually-hidden js-complete-item" ${isComplete ? 'checked' : ''}>
@@ -43,10 +44,9 @@ export class Render {
                 </label>
                 <label class="item__label">
                     <input type="text" class="item__title js-editable-item" value="${title}" readonly>
-                    <time class="item__date">${dateFilter(createdAt || new Date)}</time>
-                    <button class="item__edit js-edit-item"></button>
                 </label>
-                <button class="item__button js-remove-item"></button>
+                <button class="item__button item__button--edit js-edit-item"></button>
+                <button class="item__button item__button--remove js-remove-item"></button>
             </div>
         </li>
         `
