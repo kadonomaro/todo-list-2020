@@ -3,6 +3,10 @@
     margin: 0 auto;
     padding: 10px 20px;
     background-color: $color-gray-light;
+    border-radius: 10px;
+    &__controls {
+        margin-bottom: 15px;
+    }
     &__list {
         margin: 0;
         padding: 0;
@@ -17,7 +21,7 @@
         display: block;
         padding: 3px 5px;
         color: $color-gray-dark;
-        font-size: 12px;
+        font-size: 14px;
         line-height: 1;
     }
     &__progress {

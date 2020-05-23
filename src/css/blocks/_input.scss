@@ -1,0 +1,24 @@
+.input {
+    width: 100%;
+    padding: 5px 10px;
+    height: 25px;
+    color: #ffffff;
+    font-size: inherit;
+    font-family: inherit;
+    text-decoration: inherit;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.1s ease-in;
+    &::placeholder {
+        color: #ffffff;
+    }
+    &:focus {
+        border-color: $color-gray;
+    }
+}
+.input--edited {
+    background-color: lighten($color: $color-main, $amount: 10%);
+}

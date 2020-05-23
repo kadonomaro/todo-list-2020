@@ -10,11 +10,13 @@
 <body>
 
     <div class="todo">
-        <ul class="todo__list js-list"></ul>
-        <div class="todo__controls">
-            <input class="js-title" type="text">
-            <button class="js-add">Add</button>
+        <div class="todo__controls item">
+            <label class="item__label">
+                <input class="input js-title" type="text" placeholder="Enter your task here">
+            </label>
+            <button class="button button--add js-add"></button>
         </div>
+        <ul class="todo__list js-list"></ul>
         <progress class="todo__progress js-progress"></progress>
     </div>
 

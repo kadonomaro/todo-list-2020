@@ -89,8 +89,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (button.classList.contains('js-edit-item')) {
             const parent = button.closest('.item') as HTMLDivElement;
             const title = parent.querySelector('.js-editable-item') as HTMLInputElement;
-            title?.toggleAttribute('readonly');
-            button.classList.toggle('item__button--confirm');
+            
+            title.toggleAttribute('readonly');
+            title.classList.toggle('input--edited');
+            title.focus();
+            title.selectionStart = title.selectionEnd = title.value.length;
+            button.classList.toggle('button--confirm');
+
             if (typeof title?.getAttribute('readonly') === "string") {
                 list.update({
                     id: parent.dataset.id,
