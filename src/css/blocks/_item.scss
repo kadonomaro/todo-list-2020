@@ -31,6 +31,15 @@
         box-shadow: 0 1px 1px 0 rgba(0,0,0,.2), 0 0 1px 0 rgba(0,0,0,.15);
         cursor: pointer;
     }
+    &__date {
+        position: absolute;
+        left: 50%;
+        padding: 3px 5px;
+        color: #ffffff;
+        font-size: 12px;
+        line-height: 1;
+        background-color: $color-main;
+    }
     &__edit {
         position: absolute;
         width: 20px;

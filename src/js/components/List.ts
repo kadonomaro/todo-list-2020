@@ -12,7 +12,8 @@ export class List {
         this.items.push({
             id: Date.now().toString(),
             title: title,
-            isComplete: false
+            isComplete: false,
+            createdAt: new Date()
         });
     }
 
