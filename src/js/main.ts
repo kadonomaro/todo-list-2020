@@ -41,12 +41,13 @@ document.addEventListener('DOMContentLoaded', function () {
     render.start();
     progressBarUpdate();
 
-    addButton.addEventListener('click', addItem);
-    document.addEventListener('click', removeItem);
-    document.addEventListener('click', completeItem);
-    document.addEventListener('click', editItem);
+    addButton.addEventListener('click', addItemHandler);
+    document.addEventListener('click', removeItemHandler);
+    document.addEventListener('click', completeItemHandler);
+    document.addEventListener('click', editItemHandler);
 
-    function addItem(): void {
+    
+    function addItemHandler(): void {
         if (titleInput.value) {
             list.add(titleInput.value);
             render.start();
@@ -57,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function removeItem(evt: Event): void {
+    function removeItemHandler(evt: Event): void {
         const button = evt.target as HTMLButtonElement;
         if (button.classList.contains('js-remove-item')) {
             const parent = button.closest('.item') as HTMLDivElement;
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function completeItem(evt: Event): void {
+    function completeItemHandler(evt: Event): void {
         const checkbox = evt.target as HTMLInputElement;
         if (checkbox.classList.contains('js-complete-item')) {
             const parent = checkbox.closest('.item') as HTMLDivElement;
@@ -84,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function editItem(evt: Event): void {
+    function editItemHandler(evt: Event): void {
         const button = evt.target as HTMLInputElement;
         if (button.classList.contains('js-edit-item')) {
             const parent = button.closest('.item') as HTMLDivElement;
