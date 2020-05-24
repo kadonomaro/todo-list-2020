@@ -5,7 +5,7 @@ type ID = number | string | undefined;
 export class List {
     public items: Array<IItem>
     constructor(items: Array<IItem>) {
-        this.items = items;
+        this.items = items || [];
     }
 
     add(title: string): void {
@@ -23,11 +23,15 @@ export class List {
         this.items[index].title = title || this.items[index].title;
     }
 
-    remove(id: ID) {
+    remove(id: ID): void {
         if (id) {
             const index: number = this.items.findIndex(item => item.id?.toString() === id);
             this.items.splice(index, 1);
         }
+    }
+
+    clear(): void {
+        this.items.length = 0;
     }
 
     getIndex(id: ID): number {

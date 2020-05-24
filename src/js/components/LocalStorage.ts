@@ -12,7 +12,7 @@ export class LocalStorage {
         }
     }
 
-    reset() {
+    clear(): void {
         localStorage.removeItem('list');
     }
 }

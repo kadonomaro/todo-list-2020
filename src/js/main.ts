@@ -10,31 +10,11 @@ const storage = new LocalStorage();
 
 document.addEventListener('DOMContentLoaded', function () {
     const addButton = document.querySelector('.js-add') as HTMLButtonElement;
+    const clearButton = document.querySelector('.js-clear') as HTMLButtonElement;
     const titleInput = document.querySelector('.js-title') as HTMLInputElement;
     const progressBar = document.querySelector('.js-progress') as HTMLProgressElement;
 
-    const items: Array<IItem> = storage.load() || [
-        {
-            id: 1, 
-            title: 'First',
-            isComplete: false,
-        },
-        {
-            id: 2, 
-            title: 'Second',
-            isComplete: false
-        },
-        {
-            id: 3, 
-            title: 'Third',
-            isComplete: true
-        },
-        {
-            id: 4, 
-            title: 'Fourth',
-            isComplete: true
-        }
-    ];
+    const items: Array<IItem> = storage.load();
     const list = new List(items);
     const render = new Render(list.items, '.js-list');
 
@@ -42,11 +22,12 @@ document.addEventListener('DOMContentLoaded', function () {
     progressBarUpdate();
 
     addButton.addEventListener('click', addItemHandler);
+    clearButton.addEventListener('click', clearItemsHandler);
     document.addEventListener('click', removeItemHandler);
     document.addEventListener('click', completeItemHandler);
     document.addEventListener('click', editItemHandler);
 
-    
+
     function addItemHandler(): void {
         if (titleInput.value) {
             list.add(titleInput.value);
@@ -106,8 +87,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 progressBarUpdate();
                 storage.save(list.items);
             }
-            
         }
+    }
+
+
+    function clearItemsHandler(): void {
+        storage.clear();
+        list.clear();
+        render.start();
+        progressBarUpdate();
     }
     
 
