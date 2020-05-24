@@ -38,7 +38,7 @@ export class List {
         return this.items.findIndex(item => item.id?.toString() === id?.toString());
     }
 
-    getCompleted() {
+    getCompleted(): Array<IItem> {
         return this.items.filter(item => item.isComplete === true);
     }
 

@@ -6,10 +6,11 @@ export class LocalStorage {
         localStorage.setItem('list', JSON.stringify(data));
     }
 
-    load() {
-        if (localStorage.getItem('list')) {
-            return JSON.parse(localStorage.getItem('list') || '{}')
+    load(): Array<IItem> {
+        if (!localStorage.getItem('list')) {
+            return [];
         }
+        return JSON.parse(localStorage.getItem('list') || '{}');
     }
 
     clear(): void {
