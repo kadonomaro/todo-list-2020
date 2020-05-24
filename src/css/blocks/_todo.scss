@@ -4,6 +4,16 @@
     padding: 10px 20px;
     background-color: $color-gray-light;
     border-radius: 10px;
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    &__title {
+        margin: 0;
+        font-size: 28px;
+    }
     &__controls {
         margin-bottom: 15px;
     }
