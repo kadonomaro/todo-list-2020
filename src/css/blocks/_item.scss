@@ -6,7 +6,7 @@
     background-color: $color-main;
     border-radius: 10px;
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.2), 0 0 1px 0 rgba(0,0,0,.15);
-    transition: opacity 0.2s ease-in, filter 0.2s ease-in;
+    transition: background-color 0.2s ease;
     &__label {
         margin-left: 5px;
         flex: 1;
@@ -17,4 +17,30 @@
     text-decoration: line-through;
     filter: grayscale(0.7);
     opacity: 0.7;
+}
+.item--error {
+    background-color: $color-danger;
+}
+.item--shake {
+    animation: shake 0.3s forwards ease-in;
+}
+
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(5px);
+    }
+    55% {
+        transform: translateX(0);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+
 }

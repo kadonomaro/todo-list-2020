@@ -2,11 +2,9 @@
 import '@/css/style.scss';
 import { List } from './components/List';
 import { Render } from "./components/Render";
-
-import { IItem } from './interfaces/Item';
 import { LocalStorage } from './components/LocalStorage';
+import { IItem } from './interfaces/Item';
 
-const storage = new LocalStorage();
 
 document.addEventListener('DOMContentLoaded', function () {
     const addButton = document.querySelector('.js-add') as HTMLButtonElement;
@@ -14,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const titleInput = document.querySelector('.js-title') as HTMLInputElement;
     const progressBar = document.querySelector('.js-progress') as HTMLProgressElement;
 
+    const storage = new LocalStorage();
     const items: Array<IItem> = storage.load();
     const list = new List(items);
     const render = new Render(list.items, '.js-list');
@@ -35,6 +34,14 @@ document.addEventListener('DOMContentLoaded', function () {
             titleInput.value = '';
             progressBarUpdate();
             storage.save(list.items);
+        } else {
+            const parent = titleInput.closest('.item') as HTMLDivElement;
+            parent.classList.add('item--error');
+            parent.classList.add('item--shake');
+            setTimeout(() => {
+                parent.classList.remove('item--error');
+                parent.classList.remove('item--shake');
+            }, 800);
         }
     }
 
