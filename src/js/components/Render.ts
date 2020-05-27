@@ -9,10 +9,11 @@ export class Render {
         this.root = document.querySelector(root);
     }
 
-    start(): void {
+    start(data?: Array<IItem>): void {
         if (this.root) {
             this.root.innerHTML = '';
-            for (const item of this.data) {
+            data?.length ? '' : data = this.data;
+            for (const item of data) {
                 this.root.innerHTML += this.setTemplate({
                     id: item.id,
                     title: item.title,
