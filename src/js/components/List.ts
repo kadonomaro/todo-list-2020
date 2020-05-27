@@ -42,4 +42,8 @@ export class List {
         return this.items.filter(item => item.isComplete === true);
     }
 
+    getIncompleted(): Array<IItem> {
+        return this.items.filter(item => item.isComplete === false);
+    }
+
 }
