@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const addButton = document.querySelector('.js-add') as HTMLButtonElement;
     const clearButton = document.querySelector('.js-clear') as HTMLButtonElement;
     const titleInput = document.querySelector('.js-title') as HTMLInputElement;
+    const itemsSwitch = document.querySelector('.js-switch-items') as HTMLSelectElement;
     const progressBar = document.querySelector('.js-progress') as HTMLProgressElement;
 
     const storage = new LocalStorage();
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     addButton.addEventListener('click', addItemHandler);
     clearButton.addEventListener('click', clearItemsHandler);
+    itemsSwitch.addEventListener('change', switchItemsHandler);
     document.addEventListener('click', removeItemHandler);
     document.addEventListener('click', completeItemHandler);
     document.addEventListener('click', editItemHandler);
@@ -103,6 +105,24 @@ document.addEventListener('DOMContentLoaded', function () {
         list.clear();
         render.start();
         progressBarUpdate();
+    }
+
+
+    function switchItemsHandler(evt: Event): void {
+        const select = evt.target as HTMLSelectElement;
+        switch (select.value) {
+            case 'all':
+                render.start();
+                break;
+            case 'completed':
+                render.start(list.getCompleted());
+                break;
+            case 'incompleted':
+                render.start(list.getIncompleted());
+                break;
+            default:
+                break;
+        }
     }
     
 
