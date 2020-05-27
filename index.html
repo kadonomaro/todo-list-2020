@@ -15,17 +15,22 @@
             <button class="button button--clear js-clear" title="Clear all"></button>
         </header>
         <div class="todo__controls">
-            <div class="item">
-                <label class="item__label">
-                    <input class="input js-title" type="text" placeholder="Enter your task here">
-                </label>
-                <button class="button button--add js-add"></button>
+            <div class="todo__control">
+                <div class="item">
+                    <label class="item__label">
+                        <input class="input js-title" type="text" placeholder="Enter your task here">
+                    </label>
+                    <button class="button button--add js-add"></button>
+                </div>
             </div>
-            <select class="select js-switch-items">
-                <option value="all">All</option>
-                <option value="completed">Completed</option>
-                <option value="incompleted">Incompleted</option>
-            </select>
+            <div class="todo__control">
+                <select class="select js-switch-items">
+                    <option value="all">All</option>
+                    <option value="completed">Completed</option>
+                    <option value="incompleted">Incompleted</option>
+                </select>
+            </div>
+
         </div>
         <ul class="todo__list js-list"></ul>
         <progress class="todo__progress js-progress"></progress>

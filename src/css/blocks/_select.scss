@@ -1,0 +1,13 @@
+.select {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: inherit;
+    background-color: transparent;
+    border: 2px solid $color-main;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.1s ease-in;
+    &:focus {
+        border-color: $color-gray-dark;
+    }
+}
