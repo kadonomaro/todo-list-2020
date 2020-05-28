@@ -68,7 +68,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 id: parent.dataset.id,
                 isComplete: checkbox.checked,
             });
-            render.update(list.getIndex(parent.dataset.id));
+            // render.update(list.getIndex(parent.dataset.id));
+            switch (itemsSwitch.value) {
+                case 'all':
+                    render.start();
+                    break;
+                case 'completed':
+                    render.start(list.getCompleted());
+                    break;
+                case 'incompleted':
+                    render.start(list.getIncompleted());
+                    break;
+                default:
+                    break;
+            }
+
             progressBarUpdate();
             storage.save(list.items);
         }

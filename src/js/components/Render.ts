@@ -12,7 +12,7 @@ export class Render {
     start(data?: Array<IItem>): void {
         if (this.root) {
             this.root.innerHTML = '';
-            data?.length ? '' : data = this.data;
+            typeof data === 'object' ? '' : data = this.data;
             for (const item of data) {
                 this.root.innerHTML += this.setTemplate({
                     id: item.id,
