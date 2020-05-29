@@ -69,20 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 isComplete: checkbox.checked,
             });
             // render.update(list.getIndex(parent.dataset.id));
-            switch (itemsSwitch.value) {
-                case 'all':
-                    render.start();
-                    break;
-                case 'completed':
-                    render.start(list.getCompleted());
-                    break;
-                case 'incompleted':
-                    render.start(list.getIncompleted());
-                    break;
-                default:
-                    break;
-            }
-
+            switchRenderData(itemsSwitch.value);
             progressBarUpdate();
             storage.save(list.items);
         }
@@ -124,7 +111,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function switchItemsHandler(evt: Event): void {
         const select = evt.target as HTMLSelectElement;
-        switch (select.value) {
+        switchRenderData(select.value);
+    }
+
+
+    function switchRenderData(value: string): void {
+        switch (value) {
             case 'all':
                 render.start();
                 break;
