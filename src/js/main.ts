@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function addItemHandler(): void {
         if (titleInput.value) {
             list.add(titleInput.value);
-            render.start();
+            // render.start();
+            switchRenderData(itemsSwitch.value);
             titleInput.value = '';
             progressBarUpdate();
             storage.save(list.items);
@@ -53,7 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (button.classList.contains('js-remove-item')) {
             const parent = button.closest('.item') as HTMLDivElement;
             list.remove(parent.dataset.id);
-            render.start();
+            // render.start();
+            switchRenderData(itemsSwitch.value);
             progressBarUpdate();
             storage.save(list.items);
         }
@@ -93,7 +95,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     id: parent.dataset.id,
                     title: title?.value
                 });
-                render.update(list.getIndex(parent.dataset.id));
+                // render.update(list.getIndex(parent.dataset.id));
+                switchRenderData(itemsSwitch.value);
                 progressBarUpdate();
                 storage.save(list.items);
             }
