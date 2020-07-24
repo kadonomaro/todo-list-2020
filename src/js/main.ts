@@ -79,6 +79,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 _id: parent.dataset.id,
                 completed: checkbox.checked,
             });
+            server.update({
+                _id: parent.dataset.id,
+                completed: checkbox.checked,
+            });
             switchRenderData(itemsSwitch.value);
             progressBarUpdate();
             storage.save(list.items);
@@ -100,6 +104,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (typeof title?.getAttribute('readonly') === "string") {
                 list.update({
+                    _id: parent.dataset.id,
+                    title: title?.value
+                });
+                server.update({
                     _id: parent.dataset.id,
                     title: title?.value
                 });

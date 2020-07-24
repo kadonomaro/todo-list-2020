@@ -1,4 +1,5 @@
 import { IItem } from "../interfaces/Item";
+type ID = number | string | undefined;
 
 export class Server {
     public url: string;
@@ -27,11 +28,20 @@ export class Server {
         });
     }
 
-    update() {
-
+    async update({_id, completed, title}: IItem) {
+        const response = await fetch(this.url + _id, {
+            method: 'put',
+            body: JSON.stringify({
+                title,
+                completed
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
     }
 
-    async delete(id: number | string | undefined) {
+    async delete(id: ID) {
         const response = await fetch(this.url + id, {
             method: 'delete'
         });
