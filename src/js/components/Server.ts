@@ -10,7 +10,6 @@ export class Server {
     async load() {
         const response = await fetch(this.url);
         const data = await response.json();
-        console.log(data.items);
         return this.data = data.items;
     }
 
@@ -25,15 +24,17 @@ export class Server {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
+        });
     }
 
     update() {
 
     }
 
-    delete() {
-
+    async delete(id: number | string | undefined) {
+        const response = await fetch(this.url + id, {
+            method: 'delete'
+        });
     }
 
 }

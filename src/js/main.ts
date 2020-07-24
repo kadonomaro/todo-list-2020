@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (button.classList.contains('js-remove-item')) {
             const parent = button.closest('.item') as HTMLDivElement;
             list.remove(parent.dataset.id);
+            server.delete(parent.dataset.id);
             switchRenderData(itemsSwitch.value);
             progressBarUpdate();
             storage.save(list.items);
