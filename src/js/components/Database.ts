@@ -1,7 +1,7 @@
 import { IItem } from "../interfaces/Item";
 type ID = number | string | undefined;
 
-export class Server {
+export class Database {
     public url: string;
     private data: Array<IItem> = [];
     constructor(url: string) {
