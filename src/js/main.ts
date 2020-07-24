@@ -4,6 +4,7 @@ import { List } from './components/List';
 import { Render } from "./components/Render";
 import { LocalStorage } from './components/LocalStorage';
 import { IItem } from './interfaces/Item';
+import { Server } from './components/Server';
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -17,21 +18,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const items: Array<IItem> = [];
     const list = new List(items);
     const render = new Render(list.items, '.js-list');
+    const server = new Server('http://localhost:3000/api/items/');
 
-
-    progressBarUpdate();
-
-
-
-    async function getFullData() {
-        const response = await fetch('http://localhost:3000/api/items/');
-        const data = await response.json();
-        data.items.forEach((item: IItem) => items.push(item));
+    server.load().then((data) => {
+        data.forEach(item => {
+            items.push(item);
+        })
         render.start();
-    }
+        progressBarUpdate();
+    })
+
 
     
-    getFullData();
 
     addButton.addEventListener('click', addItemHandler);
     clearButton.addEventListener('click', clearItemsHandler);
