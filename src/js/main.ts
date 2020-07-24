@@ -21,15 +21,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const server = new Server('http://localhost:3000/api/items/');
 
     server.load().then((data) => {
-        data.forEach(item => {
+        data.forEach((item:IItem) => {
             items.push(item);
         })
         render.start();
         progressBarUpdate();
     })
 
-
-    
 
     addButton.addEventListener('click', addItemHandler);
     clearButton.addEventListener('click', clearItemsHandler);
@@ -42,6 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function addItemHandler(): void {
         if (titleInput.value) {
             list.add(titleInput.value);
+            server.create(titleInput.value);
+
             switchRenderData(itemsSwitch.value);
             titleInput.value = '';
             progressBarUpdate();

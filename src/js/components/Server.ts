@@ -10,16 +10,25 @@ export class Server {
     async load() {
         const response = await fetch(this.url);
         const data = await response.json();
-        this.data = data.items;
-        return this.data;
+        console.log(data.items);
+        return this.data = data.items;
     }
 
 
-    save() {
-
+    async create(title: string) {
+        const response = await fetch(this.url, {
+            method: 'post',
+            body: JSON.stringify({
+                title,
+                completed: false
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
     }
 
-    create() {
+    update() {
 
     }
 
