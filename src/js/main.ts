@@ -14,12 +14,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const progressBar = document.querySelector('.js-progress') as HTMLProgressElement;
 
     const storage = new LocalStorage();
-    const items: Array<IItem> = storage.load();
+    const items: Array<IItem> = [];
     const list = new List(items);
     const render = new Render(list.items, '.js-list');
 
-    render.start();
+
     progressBarUpdate();
+
+
+
+    async function getFullData() {
+        const response = await fetch('http://localhost:3000/api/items/');
+        const data = await response.json();
+        data.items.forEach((item: IItem) => items.push(item));
+        render.start();
+    }
+
+    
+    getFullData();
 
     addButton.addEventListener('click', addItemHandler);
     clearButton.addEventListener('click', clearItemsHandler);
@@ -32,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function addItemHandler(): void {
         if (titleInput.value) {
             list.add(titleInput.value);
-            // render.start();
             switchRenderData(itemsSwitch.value);
             titleInput.value = '';
             progressBarUpdate();
@@ -54,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (button.classList.contains('js-remove-item')) {
             const parent = button.closest('.item') as HTMLDivElement;
             list.remove(parent.dataset.id);
-            // render.start();
             switchRenderData(itemsSwitch.value);
             progressBarUpdate();
             storage.save(list.items);
@@ -67,10 +77,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (checkbox.classList.contains('js-complete-item')) {
             const parent = checkbox.closest('.item') as HTMLDivElement;
             list.update({
-                id: parent.dataset.id,
-                isComplete: checkbox.checked,
+                _id: parent.dataset.id,
+                completed: checkbox.checked,
             });
-            // render.update(list.getIndex(parent.dataset.id));
             switchRenderData(itemsSwitch.value);
             progressBarUpdate();
             storage.save(list.items);
@@ -92,10 +101,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (typeof title?.getAttribute('readonly') === "string") {
                 list.update({
-                    id: parent.dataset.id,
+                    _id: parent.dataset.id,
                     title: title?.value
                 });
-                // render.update(list.getIndex(parent.dataset.id));
                 switchRenderData(itemsSwitch.value);
                 progressBarUpdate();
                 storage.save(list.items);

@@ -15,9 +15,9 @@ export class Render {
             typeof data === 'object' ? '' : data = this.data;
             for (const item of data) {
                 this.root.innerHTML += this.setTemplate({
-                    id: item.id,
+                    _id: item._id,
                     title: item.title,
-                    isComplete: item.isComplete,
+                    completed: item.completed,
                     createdAt: item.createdAt
                 })
             }
@@ -27,21 +27,21 @@ export class Render {
     update(id: number): void {
         if (this.root) {
             this.root.children[id].innerHTML = this.setTemplate({
-                id: this.data[id].id,
+                _id: this.data[id]._id,
                 title: this.data[id].title,
-                isComplete: this.data[id].isComplete,
+                completed: this.data[id].completed,
                 createdAt: this.data[id].createdAt
             })
         }
     }
 
-    private setTemplate({id, title, isComplete, createdAt}: IItem): string {
+    private setTemplate({_id, title, completed, createdAt}: IItem): string {
         return `
         <li class="todo__item">
             <time class="todo__date">${dateFilter(createdAt || new Date())}</time>
-            <div class="item ${isComplete ? 'item--completed' : ''}" data-id=${id}>
+            <div class="item ${completed ? 'item--completed' : ''}" data-id=${_id}>
                 <label class="checkbox">
-                    <input type="checkbox" class="checkbox__input visually-hidden js-complete-item" ${isComplete ? 'checked' : ''}>
+                    <input type="checkbox" class="checkbox__input visually-hidden js-complete-item" ${completed ? 'checked' : ''}>
                     <span class="checkbox__custom"></span>
                 </label>
                 <label class="item__label">

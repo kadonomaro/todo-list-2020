@@ -10,22 +10,22 @@ export class List {
 
     add(title: string): void {
         this.items.push({
-            id: Date.now().toString(),
+            _id: Date.now().toString(),
             title: title,
-            isComplete: false,
+            completed: false,
             createdAt: new Date()
         });
     }
 
-    update({id, isComplete, title}: IItem): void {
-        const index: number = this.items.findIndex(item => item.id?.toString() === id);
-        this.items[index].isComplete = isComplete?.toString().length ? isComplete : this.items[index].isComplete;
+    update({_id, completed, title}: IItem): void {
+        const index: number = this.items.findIndex(item => item._id?.toString() === _id);
+        this.items[index].completed = completed?.toString().length ? completed : this.items[index].completed;
         this.items[index].title = title || this.items[index].title;
     }
 
     remove(id: ID): void {
         if (id) {
-            const index: number = this.items.findIndex(item => item.id?.toString() === id);
+            const index: number = this.items.findIndex(item => item._id?.toString() === id);
             this.items.splice(index, 1);
         }
     }
@@ -35,15 +35,15 @@ export class List {
     }
 
     getIndex(id: ID): number {
-        return this.items.findIndex(item => item.id?.toString() === id?.toString());
+        return this.items.findIndex(item => item._id?.toString() === id?.toString());
     }
 
     getCompleted(): Array<IItem> {
-        return this.items.filter(item => item.isComplete === true);
+        return this.items.filter(item => item.completed === true);
     }
 
     getIncompleted(): Array<IItem> {
-        return this.items.filter(item => item.isComplete === false);
+        return this.items.filter(item => item.completed === false);
     }
 
 }

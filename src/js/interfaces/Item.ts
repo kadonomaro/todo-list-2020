@@ -1,6 +1,6 @@
 export interface IItem {
-    id: number | string | undefined
+    _id: number | string | undefined
     title?: string,
-    isComplete?: boolean,
+    completed?: boolean,
     readonly createdAt?: Date
 }
