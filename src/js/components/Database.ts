@@ -1,7 +1,7 @@
 import { IItem } from "../interfaces/Item";
 type ID = number | string | undefined;
 
-export class Server {
+export class Database {
     public url: string;
     private data: Array<IItem> = [];
     constructor(url: string) {
@@ -43,6 +43,12 @@ export class Server {
 
     async delete(id: ID) {
         const response = await fetch(this.url + id, {
+            method: 'delete'
+        });
+    }
+
+    async deleteAll() {
+        const response = await fetch(this.url, {
             method: 'delete'
         });
     }

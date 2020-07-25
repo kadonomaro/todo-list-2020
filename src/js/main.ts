@@ -4,7 +4,7 @@ import { List } from './components/List';
 import { Render } from "./components/Render";
 import { LocalStorage } from './components/LocalStorage';
 import { IItem } from './interfaces/Item';
-import { Server } from './components/Server';
+import { Database } from './components/Database';
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const items: Array<IItem> = [];
     const list = new List(items);
     const render = new Render(list.items, '.js-list');
-    const server = new Server('http://localhost:3000/api/items/');
+    const db = new Database('https://node-todo-list-api.herokuapp.com/api/items/');
 
-    server.load().then((data) => {
+    db.load().then((data) => {
         data.forEach((item:IItem) => {
             items.push(item);
         })
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function addItemHandler(): void {
         if (titleInput.value) {
             list.add(titleInput.value);
-            server.create(titleInput.value);
+            db.create(titleInput.value);
 
             switchRenderData(itemsSwitch.value);
             titleInput.value = '';
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (button.classList.contains('js-remove-item')) {
             const parent = button.closest('.item') as HTMLDivElement;
             list.remove(parent.dataset.id);
-            server.delete(parent.dataset.id);
+            db.delete(parent.dataset.id);
             switchRenderData(itemsSwitch.value);
             progressBarUpdate();
             storage.save(list.items);
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 _id: parent.dataset.id,
                 completed: checkbox.checked,
             });
-            server.update({
+            db.update({
                 _id: parent.dataset.id,
                 completed: checkbox.checked,
             });
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     _id: parent.dataset.id,
                     title: title?.value
                 });
-                server.update({
+                db.update({
                     _id: parent.dataset.id,
                     title: title?.value
                 });
@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function clearItemsHandler(): void {
         storage.clear();
         list.clear();
+        db.deleteAll();
         render.start();
         progressBarUpdate();
     }
