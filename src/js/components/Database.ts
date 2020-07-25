@@ -47,4 +47,10 @@ export class Database {
         });
     }
 
+    async deleteAll() {
+        const response = await fetch(this.url, {
+            method: 'delete'
+        });
+    }
+
 }

@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const items: Array<IItem> = [];
     const list = new List(items);
     const render = new Render(list.items, '.js-list');
-    const db = new Database('http://localhost:3000/api/items/');
+    const db = new Database('https://node-todo-list-api.herokuapp.com/api/items/');
 
     db.load().then((data) => {
         data.forEach((item:IItem) => {
@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function clearItemsHandler(): void {
         storage.clear();
         list.clear();
+        db.deleteAll();
         render.start();
         progressBarUpdate();
     }
